@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-This module defines a type-annotated function to sum a list containing integers and floats.
+This module defines a type-annotated function
+to sum a list containing integers and floats.
 """
 from typing import List, Union
 
