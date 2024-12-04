@@ -6,7 +6,6 @@ to calculate the floor of a float.
 import math
 
 
-
 def floor(n: float) -> int:
     """
     Esta función redondea para abajo un float
