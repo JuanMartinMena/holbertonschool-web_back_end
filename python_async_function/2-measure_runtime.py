@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
-The objetive is tu return the average tiem of execution of all the time calling
+The objective is to return the average time of execution of all the time calling
 """
 import asyncio
 import time
 from typing import Union
-from 1_concurrent_coroutines import wait_n
+import importlib
+wait_n = importlib.import_module('1-concurrent_coroutines').wait_n
 
 
 def measure_time(n: int, max_delay: int) -> float:
