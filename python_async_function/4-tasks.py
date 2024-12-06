@@ -4,10 +4,11 @@ Module for executing multiple tasks concurrently.
 """
 import asyncio
 import importlib
+from typing import List
 task_wait_random = importlib.import_module('3-tasks').task_wait_random
 
 
-async def task_wait_n(n: int, max_delay: int) -> list:
+async def task_wait_n(n: int, max_delay: int) -> List[float]:
     """
     Spawns task_wait_random n times with the specified max_delay.
     Returns the list of all delays in ascending order.
