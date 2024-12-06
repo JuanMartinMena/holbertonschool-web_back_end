@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-The objective is to return the average time of execution of all the time calling
+The objective is to return the average time of execution
+of all the time calling
 """
 import asyncio
 import time
