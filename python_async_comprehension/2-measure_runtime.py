@@ -13,13 +13,10 @@ async def measure_runtime() -> float:
     Mide el tiempo total que tarda en ejecutarse.
     """
     start_time = time.time()
-
-    await asyncio.gather(
-        async_comprehension(),
-        async_comprehension(),
-        async_comprehension(),
-        async_comprehension()
-    )
+    i = 0
+    while i <= 4:
+        await asyncio.gather(
+            async_comprehension())
 
     end_time = time.time()
 
