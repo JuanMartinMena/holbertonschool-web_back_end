@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Asynchronous generator that produces random numbers.
+Este módulo define un generador
+asíncrono que produce números aleatorios.
 """
 import asyncio
 import random
@@ -9,8 +10,10 @@ from typing import AsyncGenerator
 
 async def async_generator() -> AsyncGenerator[float, None]:
     """
-    Coroutine that loops 10 times, asynchronously waits 1 second,
-    and yields a random float between 0 and 10.
+    Generador asíncrono que produce
+    10 números aleatorios entre 0 y 10,
+    con una espera asíncrona de
+    1 segundo entre cada generación.
     """
     for _ in range(10):
         await asyncio.sleep(1)
