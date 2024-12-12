@@ -28,25 +28,21 @@ class Server:
         """Dataset indexed by sorting position, starting at 0"""
         if self.__indexed_dataset is None:
             dataset = self.dataset()
-            self.__indexed_dataset = {i: dataset[i] for i in range(len(dataset))}
+            self.__indexed_dataset = {
+                i: dataset[i] for i in range(len(dataset))
+            }
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """Return a dictionary with pagination data and ensure deletions are handled."""
-        
-        # Validate input index
         assert index is not None and index >= 0, "index must be non-negative"
-        
-        # Fetch indexed dataset
+
         indexed_dataset = self.indexed_dataset()
-        
-        # Ensure the index is within bounds
         assert index < len(indexed_dataset), "index out of range"
 
         data = []
         current_index = index
         for _ in range(page_size):
-            # If the index is deleted, move to the next available index
             while current_index not in indexed_dataset:
                 current_index += 1
                 if current_index >= len(indexed_dataset):
@@ -55,11 +51,11 @@ class Server:
                 break
             data.append(indexed_dataset[current_index])
             current_index += 1
-        
+
         next_index = current_index
         return {
             "index": index,
             "data": data,
             "page_size": page_size,
-            "next_index": next_index
+            "next_index": next_index,
         }
