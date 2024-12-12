@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
-asyncio.gather and time comprehension
+asyncio.gather and time comprehension using a loop
 """
 import asyncio
 import time
 async_comprehension = __import__('1-async_comprehension').async_comprehension
-
 
 async def measure_runtime() -> float:
     """
@@ -13,10 +12,10 @@ async def measure_runtime() -> float:
     Mide el tiempo total que tarda en ejecutarse.
     """
     start_time = time.time()
-    i = 0
-    while i <= 4:
-        await asyncio.gather(
-            async_comprehension())
+
+    tasks = [async_comprehension() for _ in range(4)]
+
+    await asyncio.gather(*tasks)
 
     end_time = time.time()
 
