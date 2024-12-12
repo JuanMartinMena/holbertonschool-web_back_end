@@ -1,9 +1,20 @@
 #!/usr/bin/env python3
+"""
+Este módulo define un generador
+asíncrono que produce números aleatorios.
+"""
+import asyncio
 import random
-import time
 from typing import Generator
 
-def async_generator() -> Generator[float, None, None]:
+
+async def async_generator() -> Generator[float, None, None]:
+    """
+    Generador asíncrono que produce
+    10 números aleatorios entre 0 y 10,
+    con una espera asíncrona de
+    1 segundo entre cada generación.
+    """
     for _ in range(10):
-        time.sleep(1)
+        await asyncio.sleep(1)
         yield random.uniform(0, 10)
