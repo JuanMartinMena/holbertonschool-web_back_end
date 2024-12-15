@@ -1,22 +1,17 @@
 #!/usr/bin/env python3
-from pymongo import MongoClient
-list_all = __import__('8-all').list_all
-update_topics = __import__('10-update_topics').update_topics
+"""
+Module to find schools by a specific topic in a MongoDB collection.
+Provides a function to query schools that teach a particular topic.
+"""
 
-if __name__ == "__main__":
-    client = MongoClient('mongodb://127.0.0.1:27017')
-    school_collection = client.my_db.school
 
-    # Initial test
-    update_topics(school_collection, "Holberton school", ["Sys admin", "AI", "Algorithm"])
+def schools_by_topic(mongo_collection, topic):
+    """
+    Returns the list of schools having a specific topic.
+    """
+    if mongo_collection is None:
+        raise ValueError("mongo_collection cannot be None")
+    if not isinstance(topic, str):
+        raise ValueError("topic must be a string")
 
-    schools = list_all(school_collection)
-    for school in schools:
-        print("[{}] {} {}".format(school.get('_id'), school.get('name'), school.get('topics', "")))
-
-    # Update the same document
-    update_topics(school_collection, "Holberton school", ["iOS"])
-
-    schools = list_all(school_collection)
-    for school in schools:
-        print("[{}] {} {}".format(school.get('_id'), school.get('name'), school.get('topics', "")))
+    return list(mongo_collection.find({"topics": topic}))
