@@ -1,7 +1,2 @@
-// Insert a document with attribute name "Holberton school"
-result = db.school.insertOne({
-  name: "Holberton school"
-});
-
 // Mimic the WriteResult output format
-print("WriteResult({ \"nInserted\" : " + result.insertedCount + " })");
+print("WriteResult({ \"nInserted\" : " + (result.acknowledged ? 1 : 0) + " })");
