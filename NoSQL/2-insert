@@ -1,6 +1,10 @@
-// Insert a document with attribute name "Holberton school"
-result = db.school.insertOne({
-  name: "Holberton school"
+// Conéctate a la base de datos especificada en el comando mongo
+var dbName = db.getSiblingDB("my_db");
+
+// Inserta el documento en la colección `school`
+var result = dbName.school.insertOne({
+    name: "Holberton school"
 });
+
 // Mimic the WriteResult output format
-print("WriteResult({ \"nInserted\" : " + (result.acknowledged ? 1 : 0) + " })");
+print("WriteResult({ \"nInserted\" : " + (result.acknowledged ? 1 : 0) + " })");
