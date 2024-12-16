@@ -1,8 +1,5 @@
-// Conéctate a la base de datos especificada en el comando mongo
-var dbName = db.getSiblingDB("my_db");
-
 // Inserta el documento en la colección `school`
-var result = dbName.school.insertOne({
+result = dbName.school.insertOne({
     name: "Holberton school"
 });
 
