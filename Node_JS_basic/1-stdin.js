@@ -12,7 +12,7 @@ console.log("Welcome to Holberton School, what is your name?");
 
 // Listen for user input
 rl.on('line', (input) => {
-    console.log(`Your name is: ${input}`);
+    console.log(`Your name is: ${input.trim()}`); // Ensure consistent line endings
     rl.close(); // Close the readline interface
 });
 
